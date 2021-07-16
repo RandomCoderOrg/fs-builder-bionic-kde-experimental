@@ -1,5 +1,8 @@
-on: [push]
-
+on:
+  push:
+    paths:
+      - '**.sh'
+      - '**.yaml'
 jobs:
   build:
 
