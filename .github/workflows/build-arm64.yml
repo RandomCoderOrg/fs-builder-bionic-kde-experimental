@@ -14,11 +14,11 @@ jobs:
     - name: clone fs-arm64
       run: axel https://cdimage.ubuntu.com/ubuntu-base/focal/daily/current/focal-base-arm64.tar.gz
     - name: extract fs-arm64
-      run: mkdir -pv fs-arm64-arm64-arm64-arm64; sudo tar -xvpzf focal-base-arm64.tar.gz -C fs-arm64
+      run: mkdir -pv fs-arm64; sudo tar -xvpzf focal-base-arm64.tar.gz -C fs-arm64
     - name: Setup qemu
       run: sudo cp /bin/qemu-arm-static fs-arm64/bin ;sudo service binfmt-support start
     - name: mount fs-arm64
-      run: sudo mount --rbind /dev fs-arm64/dev; sudo mount -t proc proc fs-arm64/proc;sudo mount -t sysfs-arm64 /sys fs-arm64/sys
+      run: sudo mount --rbind /dev fs-arm64/dev; sudo mount -t proc proc fs-arm64/proc;sudo mount -t sysfs /sys fs-arm64/sys
     - name: setup network
       run: sudo touch fs-arm64/etc/resolv.conf;echo nameserver 8.8.8.8 | sudo tee fs-arm64/etc/resolv.conf
     - name: fix up fs-arm64

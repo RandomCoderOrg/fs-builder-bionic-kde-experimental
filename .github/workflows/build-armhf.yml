@@ -18,7 +18,7 @@ jobs:
     - name: Setup qemu
       run: sudo cp /bin/qemu-arm-static fs-armhf/bin ;sudo service binfmt-support start
     - name: mount fs-armhf
-      run: sudo mount --rbind /dev fs-armhf/dev; sudo mount -t proc proc fs-armhf/proc;sudo mount -t sysfs-armhf /sys fs-armhf/sys
+      run: sudo mount --rbind /dev fs-armhf/dev; sudo mount -t proc proc fs-armhf/proc;sudo mount -t sysfs /sys fs-armhf/sys
     - name: setup network
       run: sudo touch fs-armhf/etc/resolv.conf;echo nameserver 8.8.8.8 | sudo tee fs-armhf/etc/resolv.conf
     - name: fix up fs-armhf
