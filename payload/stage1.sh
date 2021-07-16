@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo "starting stage 1"
 
+apt update
+apt install apt-utils tar -y
 
 if [ -f /etc/dpkg/dpkg.cfg.d/excludes ] || [ -f /etc/dpkg/dpkg.cfg.d/excludes.dpkg-tmp ]; then
     echo "Re-enabling installation of all documentation in dpkg..."
@@ -46,5 +48,3 @@ fi
 # unminimization succeeded, there is no need to mention it in motd
 rm -f /etc/update-motd.d/60-unminimize
 
-apt update
-apt install apt-utils tar -y
