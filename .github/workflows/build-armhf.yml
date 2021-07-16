@@ -12,30 +12,30 @@ jobs:
       uses: actions/checkout@v2
     - name: setup deps
       run: sudo apt install axel binfmt-support qemu-user-static -y
-    - name: clone fs
+    - name: clone fs-armhf
       run: axel https://cdimage.ubuntu.com/ubuntu-base/focal/daily/current/focal-base-armhf.tar.gz
-    - name: extract fs
-      run: mkdir -pv fs; sudo tar -xvpzf focal-base-armhf.tar.gz -C fs
+    - name: extract fs-armhf
+      run: mkdir -pv fs-armhf; sudo tar -xvpzf focal-base-armhf.tar.gz -C fs-armhf
     - name: Setup qemu
-      run: sudo cp /bin/qemu-arm-static fs/bin ;sudo service binfmt-support start
-    - name: mount fs
-      run: sudo mount --rbind /dev fs/dev; sudo mount -t proc proc fs/proc;sudo mount -t sysfs /sys fs/sys
+      run: sudo cp /bin/qemu-arm-static fs-armhf/bin ;sudo service binfmt-support start
+    - name: mount fs-armhf
+      run: sudo mount --rbind /dev fs-armhf/dev; sudo mount -t proc proc fs-armhf/proc;sudo mount -t sysfs-armhf /sys fs-armhf/sys
     - name: setup network
-      run: sudo touch fs/etc/resolv.conf;echo nameserver 8.8.8.8 | sudo tee fs/etc/resolv.conf
-    - name: fix up fs
-      run: sudo cp -v payload/stage1.sh fs/stage1.sh; sudo cp -v payload/stage2.sh fs/stage2.sh; sudo chroot fs bash /stage1.sh; sudo chroot fs bash /stage2.sh
+      run: sudo touch fs-armhf/etc/resolv.conf;echo nameserver 8.8.8.8 | sudo tee fs-armhf/etc/resolv.conf
+    - name: fix up fs-armhf
+      run: sudo cp -v payload/stage1.sh fs-armhf/stage1.sh; sudo cp -v payload/stage2.sh fs-armhf/stage2.sh; sudo chroot fs-armhf bash /stage1.sh; sudo chroot fs-armhf bash /stage2.sh
     - name: Desktop Environment and essentials
-      run: sudo cp -v payload/stage3.sh fs/stage3.sh;sudo chroot fs bash /stage3.sh
+      run: sudo cp -v payload/stage3.sh fs-armhf/stage3.sh;sudo chroot fs-armhf bash /stage3.sh
     - name: setupvnc
-      run: sudo cp -v payload/stage4.sh fs/stage4.sh;sudo chroot fs bash /stage4.sh
+      run: sudo cp -v payload/stage4.sh fs-armhf/stage4.sh;sudo chroot fs-armhf bash /stage4.sh
     - name: cleanup
-      run: sudo chroot fs apt clean
+      run: sudo chroot fs-armhf apt clean
     - name: make tarbal
-      run: sudo chroot fs tar -cvpzf /focal-armhf.tar.gz --exclude-caches-all --exclude=/dev/*  --exclude=/sys/* --exclude=/proc/* --exclude=/run/* --exclude=/tmp/* --exclude=/focal-armhf.tar.gz /* --one-file-system || true
+      run: sudo chroot fs-armhf tar -cvpzf /focal-armhf.tar.gz --exclude-caches-all --exclude=/dev/*  --exclude=/sys/* --exclude=/proc/* --exclude=/run/* --exclude=/tmp/* --exclude=/focal-armhf.tar.gz /* --one-file-system || true
     - name: upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: focal-armhf.tar.gz
         path : |
-          fs/focal-armhf.tar.gz
+          fs-armhf/focal-armhf.tar.gz
     
