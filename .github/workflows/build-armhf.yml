@@ -1,8 +1,7 @@
 on:
   push:
-    paths:
-      - '**.sh'
-      - '**.yaml'
+    paths-ignore:
+      - '**.md'
 jobs:
   build:
 
