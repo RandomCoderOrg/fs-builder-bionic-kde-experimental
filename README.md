@@ -1,6 +1,12 @@
-# test-repo-
-this is where I experiment with GitHub features
+# fs-builder-bionic-kde-experimental
 
+this repo is used to build ubuntu bionic kde filesystem with help of github actions
 
-# Now
-i am playing with github action to build ubuntu for termux proot
+# status
+> on  devolopmennt
+
+## structure
+```tree
+/.github/workflows/ -> workflow floder
+/payload/           -> script folder for modifying stock rootfs file from source
+```
