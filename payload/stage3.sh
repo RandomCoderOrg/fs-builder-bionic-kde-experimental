@@ -7,7 +7,8 @@ apt install apt-utils -y || true
 apt install software-properties-common -y || true
 add-apt-repository ppa:kubuntu-ppa/backports -y || true
 apt update || true
-apt install kubuntu-desktop -y && apt install tigervnc-standalone-server -y || true
+apt install kubuntu-desktop -y || true
+apt install tigervnc-standalone-server -y || true
 apt install plasma-pa -y || true
 apt install plasma-widgets-addons kubuntu-wallpapers-bionic -y || true
 apt install latte-dock -y || true
