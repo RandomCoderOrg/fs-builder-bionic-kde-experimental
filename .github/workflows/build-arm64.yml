@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Clone repo
       uses: actions/checkout@v2
+    - name: Generate Shell Script Unit Testing
+      uses: vargiuscuola/gen-sh-unittest@v1.0
     - name: setup deps
       run: sudo apt install axel binfmt-support qemu-user-static -y
     - name: clone fs-arm64
