@@ -16,7 +16,7 @@ jobs:
     - name: Generate Shell Script Unit Testing
       uses: vargiuscuola/gen-sh-unittest@v1.0
     - name: setup deps
-      run: sudo apt install axel binfmt-support qemu-user-static -y
+      run: sudo apt update; sudo apt install axel binfmt-support qemu-user-static -y
     - name: clone fs-arm64
       run: axel https://cdimage.ubuntu.com/ubuntu-base/bionic/daily/current/bionic-base-arm64.tar.gz
     - name: extract fs-arm64
