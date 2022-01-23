@@ -1,4 +1,4 @@
-# fs-builder-bionic-kde-experimental
+# fs-builder-kde-experimental
 
 [![build-kde](https://github.com/RandomCoderOrg/fs-builder-kde-experimental/actions/workflows/build-kde.yml/badge.svg)](https://github.com/RandomCoderOrg/fs-builder-kde-experimental/actions/workflows/build-kde.yml)
 
