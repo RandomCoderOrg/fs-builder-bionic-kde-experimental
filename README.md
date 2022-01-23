@@ -1,6 +1,6 @@
-# fs-builder-bionic-kde-experimental
+# fs-builder-kde-experimental
 
-[![.github/workflows/build-arm64.yml](https://github.com/RandomCoderOrg/fs-builder-bionic-kde-experimental/actions/workflows/build-arm64.yml/badge.svg)](https://github.com/RandomCoderOrg/fs-builder-bionic-kde-experimental/actions/workflows/build-arm64.yml)
+[![build-kde](https://github.com/RandomCoderOrg/fs-builder-kde-experimental/actions/workflows/build-kde.yml/badge.svg)](https://github.com/RandomCoderOrg/fs-builder-kde-experimental/actions/workflows/build-kde.yml)
 
 this repo is used to build ubuntu bionic kde filesystem with help of github actions
 
