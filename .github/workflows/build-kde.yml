@@ -23,7 +23,7 @@ jobs:
           cp -rv fs-cook/* .
 
       - name: trigger fs-cook with custom script
-        run: bash payloads/build-jammy-kde.sh
+        run: bash payload/build-jammy-kde.sh
 
       - name: save arm64 builds
         uses: actions/upload-artifact@v2
