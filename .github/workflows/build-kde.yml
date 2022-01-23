@@ -20,7 +20,7 @@ jobs:
       - name: checkout fs-cook
         run: |
           git clone https://github.com/RandomCoderOrg/fs-cook
-          cp fs-cook/* .
+          cp -rv fs-cook/* .
 
       - name: trigger fs-cook with custom script
         run: bash payloads/build-jammy-kde.sh
