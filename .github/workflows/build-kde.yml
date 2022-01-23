@@ -19,7 +19,8 @@ jobs:
         run: sudo apt update; sudo apt install git build-essential binfmt-support qemu-user-static debootstrap -y
       - name: checkout fs-cook
         run: |
-          git clone https://github.com/RandomCoderOrg/fs-cook .
+          git clone https://github.com/RandomCoderOrg/fs-cook
+          cp fs-cook/* .
 
       - name: trigger fs-cook with custom script
         run: bash payloads/build-jammy-kde.sh
