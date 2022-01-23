@@ -1,4 +1,4 @@
-name: build-udroid
+name: build-kde
 on:
   push:
     paths:
