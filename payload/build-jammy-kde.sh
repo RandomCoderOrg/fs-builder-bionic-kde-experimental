@@ -1,8 +1,6 @@
 #!/bin/bash
 # source RandomCoderOrg/fs-cook
 
-#!/usr/bin/env bash
-
 source plugins/envsetup
 
 export OVERRIDER_COMPRESSION_TYPE

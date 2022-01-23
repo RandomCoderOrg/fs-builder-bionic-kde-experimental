@@ -1,0 +1,43 @@
+name: build-udroid
+on:
+  push:
+    paths:
+      - '**.sh'
+      - '**.yml'
+jobs:
+  BuildKDE:
+    name: build impish
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: Docker Setup QEMU
+        uses: docker/setup-qemu-action@v1.2.0
+      
+      - name: Satify Dependencies
+        run: sudo apt update; sudo apt install git build-essential binfmt-support qemu-user-static debootstrap -y
+      - name: checkout fs-cook
+        run: |
+          git clone https://github.com/RandomCoderOrg/fs-cook .
+
+      - name: trigger fs-cook with custom script
+        run: bash payloads/build-jammy-kde.sh
+
+      - name: save arm64 builds
+        uses: actions/upload-artifact@v2
+        with:
+          name: jammy-kde-arm64
+          path: jammy-arm64
+      
+      - name: save armhf builds
+        uses: actions/upload-artifact@v2
+        with:
+          name: jammy-kde-armhf
+          path: jammy-armhf
+      
+      - name: save amd64 builds
+        uses: actions/upload-artifact@v2
+        with:
+          name: jammy-kde-amd64
+          path: jammy-amd64
