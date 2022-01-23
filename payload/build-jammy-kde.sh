@@ -15,7 +15,7 @@ ENABLE_USER_SETUP=false
 PREFIX="${frn}"
 
 additional_setup() {
-cat <<-  EOF > $chroot_dir/etc/apt/sources.list
+$SUDO cat <<  EOF > $chroot_dir/etc/apt/sources.list
 # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
 # newer versions of the distribution.
 deb $MIRROR $SUITE main restricted
